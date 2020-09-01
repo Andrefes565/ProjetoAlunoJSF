@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="/templates/modeloSistema.xhtml">
+	
+	<f:facet name="header">Lista de Usuários</f:facet>
+	<ui:define name="menu">
+		<ui:include src="/includes/menu.xhtml" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<h:form id="frmusuarios">
+			<p:dataTable id="tbusuarios" emptyMessage="Nenhum Registro encontrado!"
+			value ="#{MBUsuario.itens}"
+			var="item"
+			paginator="true"
+			rows="8"
+			>
+				<p:column headerText="Código" sortBy="#{item.codigo}" filterBy="#{item.codigo}">
+					<h:outputText value="#{item.codigo}" />
+				</p:column>
+
+				<p:column headerText="Nome" sortBy="#{item.nome}" filterBy="#{item.nome}">
+					<h:outputText value="#{item.nome} "/>
+				</p:column>
+				<p:column headerText="Opções">
+					<p:commandButton icon="ui-icon-trash" actionListener="#{MBUsuario.prepararExcluir}" 
+					oncomplete="PF('dlgforExcluir').show();" update=":frmforExcluir:pnforExcluir"/>
+					
+					<p:commandButton icon="ui-icon-pencil" actionListener="#{MBUsuario.prepararEditar}" 
+					oncomplete="PF('dlgforEditar').show();" update=":frmforEditar:pnforEditar"/>
+				</p:column>
+				
+				<f:facet name="footer"><p:commandButton value="Novo" actionListener="#{MBUsuario.prepararCadastro}" 
+				oncomplete="PF('dlgforNovo').show();"/></f:facet>
+			</p:dataTable>
+		</h:form>
+		<p:dialog widgetVar="dlgforNovo" closeble="false" draggleble="false" resizable="false" 
+		header="Cadastrar Usuário"
+		modal="true"
+		appendTo="@(body)"
+		>
+			<h:form id="frmforNovo">
+				<h:panelGrid id="pnforNovo" columns = "2">
+					<p:outputLabel value="Nome:"/>
+					<h:inputText size="30" maxlength="50" value="#{MBUsuario.usuario.nome}"/>
+				
+				</h:panelGrid>
+				<h:panelGrid columns = "2">
+					<p:outputLabel value="Email:"/>
+					<h:inputText size="30" maxlength="50" value="#{MBUsuario.usuario.email}"/>
+				
+				</h:panelGrid>
+				<h:panelGrid columns = "2">
+					<p:outputLabel value="Senha:"/>
+					<h:inputText size="30" maxlength="50" value="#{MBUsuario.usuario.senha}"/>
+				
+				</h:panelGrid>
+				<h:panelGrid>
+					<p:commandButton value="Gravar" actionListener="#{MBUsuario.cadastrar}" oncomplete="PF('dlgforNovo').hide();"
+					update=":frmusuarios:tbusuarios"/>
+					<p:commandButton value="Cancelar" onclick="PF('dlgforNovo').hide();"/>
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+		
+		<p:dialog widgetVar="dlgforExcluir" closeble="false" draggleble="false" resizable="false" 
+		header="Excluir Usuário"
+		modal="true"
+		appendTo="@(body)"
+		>
+			<h:form id="frmforExcluir">
+				<h:panelGrid id="pnforExcluir" column="2">
+					<h:outputText value="codigo"/>
+					<h:outputText value="#{MBUsuario.usuario.codigo}"/>
+					
+					<h:outputText value="Nome"/>
+					<h:outputText value="#{MBUsuario.usuario.nome}"/>
+				
+				</h:panelGrid>
+				
+				<h:panelGrid>
+				
+				<p:commandButton value="Excluir" actionListener="#{MBUsuario.excluir}" oncomplete="PF('dlgforExcluir').hide();"
+					update=":frmusuarios:tbusuarios"/>
+					<p:commandButton value="Cancelar" onclick="PF('dlgforExcluir').hide();"/>
+				</h:panelGrid>
+			
+			</h:form>
+		
+		</p:dialog>
+		
+		
+		<p:dialog widgetVar="dlgforEditar" closeble="false" draggleble="false" resizable="false" 
+		header="Editar Usuário"
+		modal="true"
+		appendTo="@(body)"
+		>
+			<h:form id="frmforEditar">
+				<h:panelGrid id="pnforEditar" column="2">
+					<h:outputText value="codigo"/>
+					<h:outputText value="#{MBUsuario.usuario.codigo}"/>
+					
+					<h:outputText value="Nome"/>
+					<h:inputText value="#{MBUsuario.usuario.nome}"/>
+					
+					<h:outputText value="Email"/>
+					<h:inputText value="#{MBUsuario.usuario.email}"/>
+					
+					<h:outputText value="Senha"/>
+					<h:inputText value="#{MBUsuario.usuario.senha}"/>
+				
+				</h:panelGrid>
+				
+				<h:panelGrid>
+				
+				<p:commandButton value="Editar" actionListener="#{MBUsuario.editar}" oncomplete="PF('dlgforEditar').hide();"
+					update=":frmusuarios:tbusuarios"/>
+					<p:commandButton value="Cancelar" onclick="PF('dlgforEditar').hide();"/>
+				</h:panelGrid>
+			
+			</h:form>
+		
+		</p:dialog>
+		
+		
+	</ui:define>
+
+</ui:composition>
