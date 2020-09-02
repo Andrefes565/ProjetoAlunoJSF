@@ -6,6 +6,13 @@ xmlns:f="http://java.sun.com/jsf/core"
 xmlns:p="http://primefaces.org/ui"
 xmlns:ui="http://java.sun.com/jsf/facelets"
 >
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <title>CRUD com JSF/JPA</title>
+</h:head>
+<h:body>
+    
 
 <h:form>  
     <p:menubar>
@@ -16,10 +23,12 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 		</p:submenu>
 		
 		<p:submenu label="Cadastros" icon="pi pi-file">
-        	<p:menuitem value="Alunos" outcome="/pages/alunos.xhtml" />
+        	<p:menuitem value="Alunos" outcome="/aluno/alunos.xhtml" />
+        	<p:menuitem value="Cursos" outcome="/curso/cursos.xhtml" />
+        	
 		</p:submenu>
 		
 	</p:menubar>
 </h:form>
-
+</h:body>
 </ui:composition>

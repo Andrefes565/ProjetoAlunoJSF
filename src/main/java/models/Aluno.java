@@ -2,42 +2,52 @@ package models;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="alunos")
-public class Aluno implements Serializable{
+@Table(name = "tb_alunos")
+public class Aluno implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer matricula;
-	private String nome;
-	private String curso;
-	private String email;
-	private String telefone;
-	private String observacao;
+	private Long matricula;
 	
+    @Column(nullable = false)
+	private String nome;
+    @Column(nullable = false)
+	private String email;
+    @Column(nullable = false)
+	private String telefone;
+    @Column(nullable = false)
+	private String observacao;
+
+    @ManyToOne
+    @JoinColumn(name="curso_aluno")
+	private Curso curso;
+
 	public Aluno() {
-		
+
 	}
 
-	public Aluno(Integer matricula, String nome, String curso, String email, String telefone, String observacao) {
-
+	public Aluno(Long matricula, String nome, String email, String telefone, String observacao, Curso curso) {
 		this.matricula = matricula;
 		this.nome = nome;
-		this.curso = curso;
 		this.email = email;
 		this.telefone = telefone;
 		this.observacao = observacao;
+		this.curso = curso;
 	}
 
-	public Integer getMatricula() {
+	public Long getMatricula() {
 		return matricula;
 	}
 
-	public void setMatricula(Integer matricula) {
+	public void setMatricula(Long matricula) {
 		this.matricula = matricula;
 	}
 
@@ -47,14 +57,6 @@ public class Aluno implements Serializable{
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getCurso() {
-		return curso;
-	}
-
-	public void setCurso(String curso) {
-		this.curso = curso;
 	}
 
 	public String getEmail() {
@@ -80,7 +82,13 @@ public class Aluno implements Serializable{
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
-	
-	
-	
+
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+
 }

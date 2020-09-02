@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15990132346531" configfile="/ProjetoIndra/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf15990132736952" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15990132736953 pf15990132736954 pf15990132736955 pf159901340681513 pf159901340681514" path="/*"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" id="pf15990132736957" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15990132736953" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="adicionar.xhtml" id="pf15990132736958" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf15990132736954" path="/adicionar.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="remover.xhtml" id="pf15990132736959" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf15990132736955" path="/remover.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="atualizar.xhtml" id="pf159901340681515" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf159901340681513" path="/atualizar.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="alunos.xhtml" id="pf159901340681516" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf159901340681514" path="/alunos.xhtml"/>
+  <links id="pf15990132736953" target="pf15990132736957" source="pf15990132736952" outcome="home" redirect="true"/>
+  <links id="pf15990132736954" target="pf15990132736958" source="pf15990132736952" outcome="adicionar" redirect="true"/>
+  <links id="pf15990132736955" target="pf15990132736959" source="pf15990132736952" outcome="remover" redirect="true"/>
+  <links id="pf159901340681513" target="pf159901340681515" source="pf15990132736952" outcome="atualizar" redirect="true"/>
+  <links id="pf159901340681514" target="pf159901340681516" source="pf15990132736952" outcome="alunos" redirect="true"/>
+</pageflow:Pageflow>

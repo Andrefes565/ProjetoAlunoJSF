@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <title>CRUD com JSF/JPA</title>
+</h:head>
+<h:body>
+    <h1>Listagem de Cursos</h1>
+
+	<h:messages globalOnly="true" />
+
+	<h:link value="Novo Curso" outcome="/curso/adicionar.xhtml" />
+
+	<h:dataTable value="#{MBCursos.cursos}" var="curso">
+		<h:column>
+			<f:facet name="header">Descrição</f:facet>
+            <h:outputText value="#{curso.descricao}" />
+        </h:column>
+		<h:column>
+			<f:facet name="header">Área Do Conhecimento</f:facet>
+             <h:outputText value="#{curso.areaCon}" />
+        </h:column>
+		
+        <h:column>
+			<f:facet name="header">Ativo</f:facet>
+            #{curso.ativo}
+        </h:column>
+		
+	</h:dataTable>
+</h:body>
+</html>
