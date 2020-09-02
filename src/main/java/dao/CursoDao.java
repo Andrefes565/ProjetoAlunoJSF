@@ -29,7 +29,7 @@ public class CursoDao {
         List<Curso> cursos = null;
 
         try {
-        	cursos = em.createQuery("from tb_cursos").getResultList();
+        	cursos = em.createQuery("from Curso").getResultList();
         } catch (Exception e) {
             throw new Exception(e);
         } finally {

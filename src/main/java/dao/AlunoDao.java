@@ -30,7 +30,7 @@ public class AlunoDao {
         List<Aluno> alunos = null;
 
         try {
-            alunos = em.createQuery("from tb_alunos").getResultList();
+            alunos = em.createQuery("from Aluno").getResultList();
         } catch (Exception e) {
             throw new Exception(e);
         } finally {
