@@ -2,53 +2,65 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <title>Adicionar Curso</title>
+	<title>Adicionar Curso</title>
 </h:head>
 <h:body>
-    <h3>Adicionar Aluno</h3>
+	<h3>Adicionar Aluno</h3>
 
-    <h:form>
-        <h:panelGrid columns="3">
-            <h:outputLabel value="Matrícula:"/>
-            <h:inputText id="matricula" value="#{MBAlunos.aluno.matricula}" required="true">
-                <f:validateLength minimum="3" maximum="255"/>
-            </h:inputText>
-            <h:message for="matricula"/>
+	<h:form>
+		<h:panelGrid columns="3">
+			<h:outputLabel value="Matrícula:" />
+			<h:inputText id="matricula" value="#{MBAlunos.aluno.matricula}"
+				required="true">
+				<f:validateLength minimum="3" maximum="255" />
+			</h:inputText>
+			<h:message for="matricula" />
 
-            <h:outputLabel value="Nome"/>
-            <h:inputText id="nome" value="#{MBAlunos.aluno.nome}" required="true">
-                <f:validateLength minimum="3" maximum="255"/>
-            </h:inputText>
-            <h:message for="nome"/>
-            
-            <h:outputLabel value="Telefone:"/>
-            <h:inputText id="telefone" value="#{MBAlunos.aluno.telefone}" required="true">
-                <f:validateLength minimum="3" maximum="255"/>
-            </h:inputText>
-            <h:message for="telefone"/>
-            
-             <h:outputLabel value="Email"/>
-            <h:inputText id="email" value="#{MBAlunos.aluno.email}" required="true">
-                <f:validateLength minimum="3" maximum="255"/>
-            </h:inputText>
-            <h:message for="email"/>
-            
-            <h:outputLabel value="Observação"/>
-            <h:inputTextarea id="observacao" value="#{MBAlunos.aluno.observacao}" required="true">
-                <f:validateLength minimum="3" maximum="255"/>
-            </h:inputTextarea>
-            <h:message for="observacao"/>
-	
-        </h:panelGrid>
+			<h:outputLabel value="Nome" />
+			<h:inputText id="nome" value="#{MBAlunos.aluno.nome}" required="true">
+				<f:validateLength minimum="3" maximum="255" />
+			</h:inputText>
+			<h:message for="nome" />
 
-        <h:commandButton value="Enviar" action="#{MBAlunos.inserir}"/>
-    </h:form>
+			<h:outputLabel value="Cursos" />
+			<h:selectOneMenu id="curso" value="#{MBCursos.curso.id}"
+				required="true">
+				<f:selectItems value="#{MBCursos.cursos}" var="curso"
+					itemValue="#{curso}" itemLabel="#{curso.descricao}" />
+			</h:selectOneMenu>
+			<h:message for="curso" />
 
-    <h:link value="Voltar" outcome="home"/>
+			<h:outputLabel value="Telefone:" />
+			<h:inputText id="telefone" value="#{MBAlunos.aluno.telefone}"
+				required="true">
+				<f:validateLength minimum="3" maximum="255" />
+			</h:inputText>
+			<h:message for="telefone" />
+
+			<h:outputLabel value="Email" />
+			<h:inputText id="email" value="#{MBAlunos.aluno.email}"
+				required="true">
+				<f:validateLength minimum="3" maximum="255" />
+			</h:inputText>
+			<h:message for="email" />
+
+			<h:outputLabel value="Observação" />
+			<h:inputTextarea id="observacao" value="#{MBAlunos.aluno.observacao}"
+				required="true">
+				<f:validateLength minimum="3" maximum="255" />
+			</h:inputTextarea>
+			<h:message for="observacao" />
+
+		</h:panelGrid>
+
+		<h:commandButton value="Enviar" action="#{MBAlunos.inserir}" />
+	</h:form>
+
+	<h:link value="Voltar" outcome="home" />
 </h:body>
 </html>

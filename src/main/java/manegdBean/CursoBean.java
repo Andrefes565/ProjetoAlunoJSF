@@ -8,7 +8,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import dao.AlunoDao;
 import dao.CursoDao;
+import models.Aluno;
 import models.Curso;
 
 @ManagedBean(name = "MBCursos")
@@ -85,6 +87,22 @@ public class CursoBean {
         }
 
         return "home";
+    }
+	public void selecionar() {
+        try {
+            curso = CursoDao.selecionar(curso.getId());
+
+            if (curso == null || curso.getId() == 0) {
+            	curso = new Curso();
+
+                throw new Exception("Lembrete não encontrado.");
+            }
+        } catch (Exception e) {
+            FacesMessage message = new FacesMessage(e.getMessage());
+            message.setSeverity(FacesMessage.SEVERITY_ERROR);
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+
     }
 	public Curso getCurso() {
 		return curso;

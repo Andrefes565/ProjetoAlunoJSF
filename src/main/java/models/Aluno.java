@@ -4,9 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,8 +28,7 @@ public class Aluno implements Serializable {
     @Column(nullable = false)
 	private String observacao;
 
-    @ManyToOne
-    @JoinColumn(name="curso_aluno")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
 	private Curso curso;
 
 	public Aluno() {

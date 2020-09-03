@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import manegdBean.JpaResourceBean;
-
+import models.Aluno;
 import models.Curso;
 
 public class CursoDao {
@@ -69,5 +69,18 @@ public class CursoDao {
         } finally {
             em.close();
         }
+    }
+	public static Curso selecionar(long id) throws Exception {
+		Curso curso;
+
+        EntityManager em = JpaResourceBean.getEntityManagerFactory().createEntityManager();
+
+        try {
+        	curso = em.find(Curso.class, id);
+        } finally {
+            em.close();
+        }
+
+        return curso;
     }
 }

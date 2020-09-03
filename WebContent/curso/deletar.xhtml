@@ -11,29 +11,22 @@
     <title>Remover lembrete</title>
 
     <f:metadata>
-        <f:viewParam name="lembrete" value="#{lembreteBean.lembrete.id}"/>
-        <f:event type="preRenderView" listener="#{lembreteBean.selecionar}"/>
+        <f:viewParam name="curso" value="#{MBCursos.curso.id}"/>
+        <f:event type="preRenderView" listener="#{MBCursos.selecionar}"/>
     </f:metadata>
 </h:head>
 <h:body>
 
     <h:messages globalOnly="true"/>
 
-    <h:panelGroup rendered="#{lembreteBean.lembrete.id != 0}">
-        <h1>Deseja remover esse lembrete "
-            <h:outputText value="#{lembreteBean.lembrete.titulo}"/>
+    <h:panelGroup rendered="#{MBCursos.curso.id != 0}">
+        <h1>Deseja remover esse Curso "
+            <h:outputText value="#{MBCursos.curso.descricao}"/>
             "?
         </h1>
-
-        <p>Cadastrado em
-            <h:outputText value="#{lembreteBean.lembrete.criacao}">
-                <f:convertDateTime pattern="dd/MM/yyyy" timeZone="#{initParam.timezone}"/>
-            </h:outputText>
-            .
-        </p>
-
+        
         <h:form>
-            <h:commandButton value="Confirmar" action="#{lembreteBean.excluir}"/>
+            <h:commandButton value="Confirmar" action="#{MBCursos.excluir}"/>
         </h:form>
     </h:panelGroup>
 

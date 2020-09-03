@@ -38,6 +38,7 @@ public class AlunoBean {
 	public String inserir() {
         try {
         	alunoDao.inserir(aluno);
+        	
 
             alunos = AlunoDao.listar();
 

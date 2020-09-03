@@ -1,36 +1,57 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-<h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/modeloSistema.xhtml">
 
-    <title>CRUD com JSF/JPA</title>
-</h:head>
-<h:body>
-    <h1>Listagem de Cursos</h1>
+	<f:facet name="header">Lista de Alunos</f:facet>
+	<ui:define name="menu">
+		<ui:include src="/includes/menu.xhtml" />
+	</ui:define>
 
-	<h:messages globalOnly="true" />
+	<ui:define name="conteudo">
+		<h:form id="frmacursos">
+			<p:dataTable id="tbcursos" emptyMessage="Nenhum Registro encontrado!"
+				value="#{MBCursos.cursos}" var="curso" paginator="true" rows="8">
+				<p:column headerText="Id" sortBy="#{curso.id}"
+					filterBy="#{curso.id}">
+					<h:outputText value="#{curso.id}" />
+				</p:column>
+				<p:column headerText="DescriÁ„o" sortBy="#{curso.descricao}"
+					filterBy="#{curso.descricao}">
+					<h:outputText value="#{curso.descricao}" />
+				</p:column>
 
-	<h:link value="Novo Curso" outcome="/curso/adicionar.xhtml" />
+				<p:column headerText="¡rea Do Conhecimento" sortBy="#{curso.areaCon}"
+					filterBy="#{curso.areaCon}">
+					<h:outputText value="#{curso.areaCon}" />
+				</p:column>
+				<p:column headerText="Status" sortBy="#{curso.ativo}"
+					filterBy="#{curso.ativo}">
+					<h:outputText value="#{curso.ativo}" />
+				</p:column>
+				
+				<p:column headerText="OpÁıes">
+					<h:link value="Deletar" outcome="/curso/deletar.xhtml">
+						<f:param name="curso" value="#{curso.id}" />
+					</h:link>
+				</p:column>
+				<p:column headerText="OpÁıes">
+					<h:link value="Atualizar" outcome="/curso/atualizar.xhtml">
+						<f:param name="curso" value="#{curso.id}" />
+					</h:link>
+				</p:column>
 
-	<h:dataTable value="#{MBCursos.cursos}" var="curso">
-		<h:column>
-			<f:facet name="header">Descri√ß√£o</f:facet>
-            <h:outputText value="#{curso.descricao}" />
-        </h:column>
-		<h:column>
-			<f:facet name="header">√Årea Do Conhecimento</f:facet>
-             <h:outputText value="#{curso.areaCon}" />
-        </h:column>
-		
-        <h:column>
-			<f:facet name="header">Ativo</f:facet>
-            #{curso.ativo}
-        </h:column>
-		
-	</h:dataTable>
-</h:body>
-</html>
+				<f:facet name="footer">
+					<h:link value="Novo Curso" outcome="/curso/adicionar.xhtml">
+					</h:link>
+				</f:facet>
+
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

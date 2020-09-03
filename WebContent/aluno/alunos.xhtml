@@ -1,44 +1,49 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-<h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/modeloSistema.xhtml">
 
-    <title>CRUD com JSF/JPA</title>
-</h:head>
-<h:body>
-    <h1>Listagem de Aluno</h1>
+	<f:facet name="header">Lista de Alunos</f:facet>
+	<ui:define name="menu">
+		<ui:include src="/includes/menu.xhtml" />
+	</ui:define>
 
-	<h:messages globalOnly="true" />
+	<ui:define name="conteudo">
+		<h:form id="frmalunos">
+			<p:dataTable id="tbalunos" emptyMessage="Nenhum Registro encontrado!"
+				value="#{MBAlunos.alunos}" var="aluno" paginator="true" rows="8">
+				<p:column headerText="MatrÌcula" sortBy="#{aluno.matricula}"
+					filterBy="#{aluno.matricula}">
+					<h:outputText value="#{aluno.matricula}" />
+				</p:column>
 
-	<h:link value="Novo Aluno" outcome="/aluno/adicionar.xhtml" />
+				<p:column headerText="Nome" sortBy="#{aluno.nome}"
+					filterBy="#{aluno.nome}">
+					<h:outputText value="#{aluno.nome}" />
+				</p:column>
+				<p:column headerText="OpÁıes">
+					<h:link value="Deletar" outcome="deletar">
+						<f:param name="aluno" value="#{aluno.matricula}" />
+					</h:link>
+				</p:column>
+				<p:column headerText="OpÁıes">
+					<h:link value="Atualizar" outcome="/aluno/atualizar.xhtml">
+						<f:param name="aluno" value="#{aluno.matricula}" />
+					</h:link>
+				</p:column>
 
-	<h:dataTable value="#{MBAlunos.alunos}" var="aluno">
-		<h:column>
-			<f:facet name="header">Matr√≠cula</f:facet>
-            <h:outputText value="#{aluno.matricula}" />
-        </h:column>
-		<h:column>
-			<f:facet name="header">Nome</f:facet>
-           <h:outputText value="#{aluno.nome}" />
-        </h:column>
-		
-        <h:column>
-			<f:facet name="header">Email</f:facet>
-            <h:outputText value="#{aluno.email}" />
-        </h:column>
-        <h:column>
-			<f:facet name="header">Telefone</f:facet>
-           <h:outputText value="#{aluno.telefone}" />
-        </h:column>
-        <h:column>
-		<f:facet name="header">Observa√ß√£o</f:facet>
-             <h:outputText value="#{aluno.observacao}" />
-        </h:column>
-		
-	</h:dataTable>
-</h:body>
-</html>
+				<f:facet name="footer">
+					<h:link value="Novo Aluno" outcome="/aluno/adicionar.xhtml">
+
+					</h:link>
+				</f:facet>
+
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
