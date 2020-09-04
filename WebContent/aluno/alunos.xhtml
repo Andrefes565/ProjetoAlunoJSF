@@ -24,6 +24,7 @@
 				<p:column headerText="Nome" sortBy="#{aluno.nome}"
 					filterBy="#{aluno.nome}">
 					<h:outputText value="#{aluno.nome}" />
+					
 				</p:column>
 				<p:column headerText="Opções">
 					<h:link value="Deletar" outcome="deletar">
@@ -32,6 +33,11 @@
 				</p:column>
 				<p:column headerText="Opções">
 					<h:link value="Atualizar" outcome="/aluno/atualizar.xhtml">
+						<f:param name="aluno" value="#{aluno.matricula}" />
+					</h:link>
+				</p:column>
+				<p:column headerText="Opções">
+					<h:link value="Detalhes" outcome="/aluno/detalhes.xhtml">
 						<f:param name="aluno" value="#{aluno.matricula}" />
 					</h:link>
 				</p:column>

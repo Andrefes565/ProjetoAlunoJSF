@@ -2,8 +2,6 @@ package manegdBean;
 
 import java.util.List;
 
-
-
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -11,7 +9,9 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import dao.AlunoDao;
+import dao.CursoDao;
 import models.Aluno;
+import models.Curso;
 
 @ManagedBean(name = "MBAlunos")
 @ViewScoped
@@ -20,7 +20,11 @@ public class AlunoBean {
 	private Aluno aluno;
     private AlunoDao alunoDao;
     private List<Aluno> alunos;
-	
+    private Curso  curso;
+    private CursoDao cursoDao = new CursoDao();
+   
+    
+   
 	@PostConstruct
     public void init() {
         alunoDao = new AlunoDao();
@@ -36,10 +40,11 @@ public class AlunoBean {
            
     }
 	public String inserir() {
-        try {
-        	alunoDao.inserir(aluno);
-        	
 
+
+        try {
+        	aluno.setCurso(cursoDao.selecionar(aluno.getCurso().getId()));
+        	alunoDao.inserir(aluno);
             alunos = AlunoDao.listar();
 
             FacesContext context = FacesContext.getCurrentInstance();
@@ -56,6 +61,7 @@ public class AlunoBean {
 	
 	public String atualizar() {
         try {
+        	
         	alunoDao.atualizar(aluno);
 
             alunos = AlunoDao.listar();
@@ -97,7 +103,7 @@ public class AlunoBean {
             if (aluno == null || aluno.getMatricula() == 0) {
                 aluno = new Aluno();
 
-                throw new Exception("Lembrete não encontrado.");
+                throw new Exception("Aluno não encontrado.");
             }
         } catch (Exception e) {
             FacesMessage message = new FacesMessage(e.getMessage());
@@ -127,6 +133,17 @@ public class AlunoBean {
 	public void setAlunos(List<Aluno> alunos) {
 		this.alunos = alunos;
 	}
+	public Curso getCurso() {
+		return curso;
+	}
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+	public CursoDao getCursoDao() {
+		return cursoDao;
+	}
+	public void setCursoDao(CursoDao cursoDao) {
+		this.cursoDao = cursoDao;
+	}
 	
-
 }

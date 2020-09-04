@@ -6,7 +6,7 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
+	
 	<title>Adicionar Curso</title>
 </h:head>
 <h:body>
@@ -28,9 +28,8 @@
 			<h:message for="nome" />
 
 			<h:outputLabel value="Cursos" />
-			<h:selectOneMenu id="curso" value="#{MBCursos.curso.id}"
-				required="true">
-				<f:selectItems value="#{MBCursos.cursos}" var="curso"
+			<h:selectOneMenu id="curso" value="#{MBAlunos.aluno.curso}" converter="cursoConerverter">
+				<f:selectItems var="curso" value="#{MBCursos.cursos}"
 					itemValue="#{curso}" itemLabel="#{curso.descricao}" />
 			</h:selectOneMenu>
 			<h:message for="curso" />

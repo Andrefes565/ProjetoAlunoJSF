@@ -8,9 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import dao.AlunoDao;
 import dao.CursoDao;
-import models.Aluno;
 import models.Curso;
 
 @ManagedBean(name = "MBCursos")

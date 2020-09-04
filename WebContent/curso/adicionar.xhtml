@@ -2,41 +2,52 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <title>Adicionar Curso</title>
+	<title>Adicionar Curso</title>
 </h:head>
 <h:body>
-    <h3>Adicionar Curso</h3>
+	<h3>Adicionar Curso</h3>
 
-    <h:form>
-        <h:panelGrid columns="3">
-            <h:outputLabel value="Descrição"/>
-            <h:inputText id="descricao" value="#{MBCursos.curso.descricao}" required="true">
-                <f:validateLength minimum="3" maximum="255"/>
-            </h:inputText>
-            <h:message for="descricao"/>
+	<h:form>
+		<h:panelGrid columns="3">
+			<h:message for="id" />
+			<h:outputLabel value="Id" />
+			<h:inputText id="id" value="#{MBCursos.curso.id}"
+				required="true">
+			</h:inputText>
+			<h:message for="descricao" />
+			
+			<h:message for="descricao" />
+			<h:outputLabel value="Descrição" />
+			<h:inputText id="descricao" value="#{MBCursos.curso.descricao}"
+				required="true">
+				<f:validateLength minimum="3" maximum="255" />
+			</h:inputText>
+			<h:message for="descricao" />
 
-            <h:outputLabel value="Área do Conhecimento"/>
-            <h:inputText id="areaCon" value="#{MBCursos.curso.areaCon}" required="true">
-                <f:validateLength minimum="3" maximum="255"/>
-            </h:inputText>
-            <h:message for="areaCon"/>
-            
-            <h:outputLabel value="Ativo"/>
-            <h:inputText id="ativo" value="#{MBCursos.curso.ativo}" required="true">
-                <f:validateLength minimum="3" maximum="255"/>
-            </h:inputText>
-            <h:message for="ativo"/>
-	
-        </h:panelGrid>
+			<h:outputLabel value="Área do Conhecimento" />
+			<h:inputText id="areaCon" value="#{MBCursos.curso.areaCon}"
+				required="true">
+				<f:validateLength minimum="3" maximum="255" />
+			</h:inputText>
+			<h:message for="areaCon" />
 
-        <h:commandButton value="Enviar" action="#{MBCursos.inserir}"/>
-    </h:form>
+			<h:outputLabel value="Ativo" />
+			<h:inputText id="ativo" value="#{MBCursos.curso.ativo}"
+				required="true">
+				<f:validateLength minimum="3" maximum="255" />
+			</h:inputText>
+			<h:message for="ativo" />
 
-    <h:link value="Voltar" outcome="home"/>
+		</h:panelGrid>
+
+		<h:commandButton value="Enviar" action="#{MBCursos.inserir}" />
+	</h:form>
+
+	<h:link value="Voltar" outcome="home" />
 </h:body>
 </html>

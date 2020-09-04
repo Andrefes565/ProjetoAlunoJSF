@@ -45,7 +45,7 @@
 				<h:message for="nome" />
 
 				<h:outputLabel value="Cursos"/>
-                <h:selectOneMenu id="curso" value="#{MBCursos.curso.descricao}" required="true">
+                <h:selectOneMenu id="curso" value="#{MBAlunos.aluno.curso}" converter="cursoConerverter">
                     <f:selectItems value="#{MBCursos.cursos}"
                                    var="curso"
                                    itemValue="#{curso}"
