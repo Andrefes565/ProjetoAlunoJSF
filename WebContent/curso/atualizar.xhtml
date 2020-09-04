@@ -24,6 +24,7 @@
 
 		<h:form>
 			<h:panelGrid columns="3">
+			
 				<h:outputLabel value="ID:" />
 				<h:inputText f:disabled="true" id="id" value="#{MBCursos.curso.id}"
 					required="true">
@@ -56,7 +57,7 @@
 			</h:panelGrid>
 		</h:form>
 
-		<h:link value="Voltar" outcome="home" />
+		<h:link value="Voltar" outcome="/curso/cursos.xhtml" />
 	</h:panelGroup>
 </h:body>
 </html>

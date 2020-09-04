@@ -21,13 +21,13 @@
 			</h:inputText>
 			<h:message for="matricula" />
 
-			<h:outputLabel value="Nome" />
+			<h:outputLabel value="Nome:" />
 			<h:inputText id="nome" value="#{MBAlunos.aluno.nome}" required="true">
 				<f:validateLength minimum="3" maximum="255" />
 			</h:inputText>
 			<h:message for="nome" />
 
-			<h:outputLabel value="Cursos" />
+			<h:outputLabel value="Cursos:" />
 			<h:selectOneMenu id="curso" value="#{MBAlunos.aluno.curso}" converter="cursoConerverter">
 				<f:selectItems var="curso" value="#{MBCursos.cursos}"
 					itemValue="#{curso}" itemLabel="#{curso.descricao}" />
@@ -41,25 +41,24 @@
 			</h:inputText>
 			<h:message for="telefone" />
 
-			<h:outputLabel value="Email" />
+			<h:outputLabel value="Email:" />
 			<h:inputText id="email" value="#{MBAlunos.aluno.email}"
 				required="true">
 				<f:validateLength minimum="3" maximum="255" />
 			</h:inputText>
 			<h:message for="email" />
 
-			<h:outputLabel value="Observação" />
+			<h:outputLabel value="Observação:" />
 			<h:inputTextarea id="observacao" value="#{MBAlunos.aluno.observacao}"
 				required="true">
 				<f:validateLength minimum="3" maximum="255" />
 			</h:inputTextarea>
 			<h:message for="observacao" />
-
 		</h:panelGrid>
 
 		<h:commandButton value="Enviar" action="#{MBAlunos.inserir}" />
 	</h:form>
 
-	<h:link value="Voltar" outcome="home" />
+	<h:link value="Voltar" outcome="/aluno/alunos.xhtml" />
 </h:body>
 </html>

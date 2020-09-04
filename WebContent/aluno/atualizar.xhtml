@@ -17,70 +17,64 @@
 	</f:metadata>
 </h:head>
 <h:body>
-	<h:form>
-		<p:submenu label="Cadastros" icon="pi pi-file">
-			<p:menuitem value="Alunos" outcome="/aluno/alunos.xhtml" />
-			<p:menuitem value="Cursos" outcome="/curso/cursos.xhtml" />
-		</p:submenu>
-	</h:form>
-
+	<h1>Editar Aluno</h1>
 	<h:messages globalOnly="true" />
 
 	<h:panelGroup rendered="#{MBAlunos.aluno.matricula != 0}">
 
-		<h:form >
+		<h:form>
 			<h:panelGrid columns="3">
+			
 				<h:outputLabel value="Matrícula:" />
-				<h:inputText f:disabled="true" id="matricula" value="#{MBAlunos.aluno.matricula}"
-					required="true">
+				<h:inputText f:disabled="true" id="matricula"
+					value="#{MBAlunos.aluno.matricula}" required="true">
 					<f:validateLength minimum="3" maximum="255" />
 				</h:inputText>
 				<h:message for="matricula" />
 
-				<h:outputLabel value="Nome" />
+				<h:outputLabel value="Nome:" />
 				<h:inputText id="nome" value="#{MBAlunos.aluno.nome}"
 					required="true">
 					<f:validateLength minimum="3" maximum="255" />
 				</h:inputText>
 				<h:message for="nome" />
 
-				<h:outputLabel value="Cursos"/>
-                <h:selectOneMenu id="curso" value="#{MBAlunos.aluno.curso}" converter="cursoConerverter">
-                    <f:selectItems value="#{MBCursos.cursos}"
-                                   var="curso"
-                                   itemValue="#{curso}"
-                                   itemLabel="#{curso.descricao}"
-                    />
-                </h:selectOneMenu>
-                <h:message for="curso"/>
-                
-                <h:outputLabel value="Email"/>
-                <h:inputText id="email" value="#{MBAlunos.aluno.email}"
+				<h:outputLabel value="Curso:" />
+				<h:selectOneMenu id="curso" value="#{MBAlunos.aluno.curso}"
+					converter="cursoConerverter">
+					<f:selectItems value="#{MBCursos.cursos}" var="curso"
+						itemValue="#{curso}" itemLabel="#{curso.descricao}" />
+				</h:selectOneMenu>
+				<h:message for="curso" />
+
+				<h:outputLabel value="Email" />
+				<h:inputText id="email" value="#{MBAlunos.aluno.email}"
 					required="true">
 					<f:validateLength minimum="3" maximum="255" />
 				</h:inputText>
 				<h:message for="email" />
-				
-				 <h:outputLabel value="Telefone"/>
+
+				<h:outputLabel value="Telefone" />
 				<h:inputText id="telefone" value="#{MBAlunos.aluno.telefone}"
 					required="true">
 					<f:validateLength minimum="3" maximum="255" />
 				</h:inputText>
 				<h:message for="telefone" />
-				
-				<h:outputLabel value="Observação:"/>
-                <h:inputTextarea id="observacao" value="#{MBAlunos.aluno.observacao}" required="true">
-                    <f:validateLength minimum="3" maximum="255"/>
-                </h:inputTextarea>
-                <h:message for="observacao"/>
-                
-                
 
-				 <h:commandButton value="Enviar" action="#{MBAlunos.atualizar}"/>
+				<h:outputLabel value="Observação:" />
+				<h:inputTextarea id="observacao"
+					value="#{MBAlunos.aluno.observacao}" required="true">
+					<f:validateLength minimum="3" maximum="255" />
+				</h:inputTextarea>
+				<h:message for="observacao" />
+
+
+
+				<h:commandButton value="Enviar" action="#{MBAlunos.atualizar}" />
 			</h:panelGrid>
 		</h:form>
 
-		<h:link value="Voltar" outcome="home" />
+		<h:link value="Voltar" outcome="/aluno/alunos.xhtml" />
 	</h:panelGroup>
 </h:body>
 </html>

@@ -8,6 +8,7 @@
 	 <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>models.Aluno</class>
 		<class>models.Curso</class>
+		<class>models.Funcionario</class>
 		
 		<properties>
 			<!-- Dados de conexão com o banco -->

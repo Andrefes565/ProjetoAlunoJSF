@@ -2,6 +2,7 @@ package manegdBean;
 
 import java.util.List;
 
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -48,7 +49,7 @@ public class CursoBean {
             context.getExternalContext().getFlash().setKeepMessages(true);
         }
 
-        return "home";
+        return "/curso/cursos.xhtml";
     }
 	
 	public String atualizar() {
@@ -66,7 +67,7 @@ public class CursoBean {
             context.getExternalContext().getFlash().setKeepMessages(true);
         }
 
-        return "home";
+        return "/curso/cursos.xhtml";
     }
 	
 	public String excluir() {
@@ -84,7 +85,7 @@ public class CursoBean {
             context.getExternalContext().getFlash().setKeepMessages(true);
         }
 
-        return "home";
+        return "/curso/cursos.xhtml";
     }
 	public void selecionar() {
         try {

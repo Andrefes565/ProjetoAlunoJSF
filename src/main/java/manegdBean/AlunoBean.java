@@ -43,7 +43,11 @@ public class AlunoBean {
 
 
         try {
-        	aluno.setCurso(cursoDao.selecionar(aluno.getCurso().getId()));
+        	Curso curso = cursoDao.selecionar(aluno.getCurso().getId());
+        	if(curso.getAtivo() == false) {
+        		throw new Exception("Curso Inativo!!");
+        	}
+        	aluno.setCurso(curso);
         	alunoDao.inserir(aluno);
             alunos = AlunoDao.listar();
 
@@ -56,7 +60,7 @@ public class AlunoBean {
             context.getExternalContext().getFlash().setKeepMessages(true);
         }
 
-        return "home";
+        return "/aluno/alunos.xhtml";
     }
 	
 	public String atualizar() {
@@ -75,7 +79,7 @@ public class AlunoBean {
             context.getExternalContext().getFlash().setKeepMessages(true);
         }
 
-        return "home";
+        return "/aluno/alunos.xhtml";
     }
 	
 	public String excluir() {
@@ -93,7 +97,7 @@ public class AlunoBean {
             context.getExternalContext().getFlash().setKeepMessages(true);
         }
 
-        return "home";
+        return "/aluno/alunos.xhtml";
     }
 	
 	public void selecionar() {

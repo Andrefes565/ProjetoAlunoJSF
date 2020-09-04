@@ -12,13 +12,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-/*
-@NamedQueries({
-	@NamedQuery(name = "Curso.findAll", query = "SELECT e FROM Curso e"),
-	@NamedQuery(name = "Curso.findByNome", query = "SELECT e FROM Curso e WHERE e.descricao = :descricao")
-})
-*/
 @Entity
 @Table(name = "tb_cursos")
 public class Curso implements Serializable {

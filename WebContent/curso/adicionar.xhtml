@@ -14,29 +14,27 @@
 
 	<h:form>
 		<h:panelGrid columns="3">
-			<h:message for="id" />
-			<h:outputLabel value="Id" />
+			<h:outputLabel value="Id:" />
 			<h:inputText id="id" value="#{MBCursos.curso.id}"
 				required="true">
 			</h:inputText>
-			<h:message for="descricao" />
+			<h:message for="id" />
 			
-			<h:message for="descricao" />
-			<h:outputLabel value="Descrição" />
+			<h:outputLabel value="Descrição:" />
 			<h:inputText id="descricao" value="#{MBCursos.curso.descricao}"
 				required="true">
 				<f:validateLength minimum="3" maximum="255" />
 			</h:inputText>
 			<h:message for="descricao" />
 
-			<h:outputLabel value="Área do Conhecimento" />
+			<h:outputLabel value="Área do Conhecimento:" />
 			<h:inputText id="areaCon" value="#{MBCursos.curso.areaCon}"
 				required="true">
 				<f:validateLength minimum="3" maximum="255" />
 			</h:inputText>
 			<h:message for="areaCon" />
 
-			<h:outputLabel value="Ativo" />
+			<h:outputLabel value="Status" />
 			<h:inputText id="ativo" value="#{MBCursos.curso.ativo}"
 				required="true">
 				<f:validateLength minimum="3" maximum="255" />
@@ -48,6 +46,6 @@
 		<h:commandButton value="Enviar" action="#{MBCursos.inserir}" />
 	</h:form>
 
-	<h:link value="Voltar" outcome="home" />
+	<h:link value="Voltar" outcome="/curso/cursos.xhtml" />
 </h:body>
 </html>
