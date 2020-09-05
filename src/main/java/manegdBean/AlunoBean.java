@@ -39,6 +39,7 @@ public class AlunoBean {
         }
            
     }
+	@SuppressWarnings("static-access")
 	public String inserir() {
 
 
