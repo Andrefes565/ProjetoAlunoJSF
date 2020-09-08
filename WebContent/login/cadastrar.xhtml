@@ -13,22 +13,18 @@
 <h:body>
 	<h1>Cadastro</h1>
 	<h:form>
-		<h:panelGrid columns="3">
-			<h:outputLabel value="Matrícula:" />
-			<h:inputText id="matricula" value="#{MBFuncionarios.funcionario.matricula}">
-				<f:validateLength minimum="3" maximum="255" />
-			</h:inputText>
-			<h:message for="matricula" />
-			
-			
-			<h:outputLabel value="Senha:" />
-			<h:inputText id="senha" value="#{MBFuncionarios.funcionario.senha}">
-				<f:validateLength minimum="3" maximum="255" />
-			</h:inputText>
-			<h:message for="senha" />
-
-		</h:panelGrid>
-		<h:commandButton value="cadastrar" action="#{MBFuncionarios.inserir}" />
+		<div class="ui-fluid">
+			<div class="p-field">
+				<p:outputLabel for="matricula" value="Matrícula:" />
+				<p:inputText id="matricula"
+					value="#{MBFuncionarios.funcionario.matricula}" />
+			</div>
+			<div class="p-field">
+				<p:outputLabel for="senha" value="Senha:" />
+				<p:password id="senha" value="#{MBFuncionarios.funcionario.senha}" feedback="true" />
+			</div>
+   		</div>
+		<p:commandButton value="Entrar"  action="#{MBFuncionarios.logar}" />
 	</h:form>
 	<h:link value="Login" outcome="/login/login.xhtml" />
 </h:body>

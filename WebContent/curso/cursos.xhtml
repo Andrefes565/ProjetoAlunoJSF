@@ -25,26 +25,25 @@
 					<h:outputText value="#{curso.descricao}" />
 				</p:column>
 
-				<p:column headerText="Área Do Conhecimento" sortBy="#{curso.areaCon}"
-					filterBy="#{curso.areaCon}">
+				<p:column headerText="Área Do Conhecimento"
+					sortBy="#{curso.areaCon}" filterBy="#{curso.areaCon}">
 					<h:outputText value="#{curso.areaCon}" />
 				</p:column>
 				<p:column headerText="Status" sortBy="#{curso.ativo}"
 					filterBy="#{curso.ativo}">
 					<h:outputText value="#{curso.ativo}" />
 				</p:column>
-				
-				<p:column headerText="Opções">
-					<h:link value="Deletar" outcome="/curso/deletar.xhtml">
-						<f:param name="curso" value="#{curso.id}" />
-					</h:link>
-				</p:column>
-				<p:column headerText="Opções">
-					<h:link value="Atualizar" outcome="/curso/atualizar.xhtml">
-						<f:param name="curso" value="#{curso.id}" />
-					</h:link>
-				</p:column>
 
+				<p:column headerText="Opções">
+					<p:linkButton outcome="/curso/deletar.xhtml" value="Deletar"
+						style="margin-right:20px;">
+						<f:param name="curso" value="#{curso.id}" />
+					</p:linkButton>
+					<p:linkButton outcome="/curso/atualizar.xhtml" value="Atualizar"
+						style="margin-right:20px;">
+						<f:param name="curso" value="#{curso.id}" />
+					</p:linkButton>
+				</p:column>
 				<f:facet name="footer">
 					<h:link value="Novo Curso" outcome="/curso/adicionar.xhtml">
 					</h:link>

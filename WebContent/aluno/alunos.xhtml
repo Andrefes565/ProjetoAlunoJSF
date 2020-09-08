@@ -24,31 +24,26 @@
 				<p:column headerText="Nome" sortBy="#{aluno.nome}"
 					filterBy="#{aluno.nome}">
 					<h:outputText value="#{aluno.nome}" />
+
+				</p:column>
+				<p:column headerText="Opções">
+					<p:linkButton outcome="/aluno/atualizar.xhtml" value="Atualizar"
+						style="margin-right:20px;">
+						<f:param name="aluno" value="#{aluno.matricula}" />
+					</p:linkButton>
+					<p:linkButton outcome="/aluno/detalhes.xhtml" value="Detalhes"
+						style="margin-right:20px;">
+						<f:param name="aluno" value="#{aluno.matricula}" />
+					</p:linkButton>
+					<p:linkButton value="Deletar" outcome="deletar"
+						style="margin-right:20px;">
+						<f:param name="aluno" value="#{aluno.matricula}" />
+					</p:linkButton>
 					
 				</p:column>
-				<p:column headerText="Opções">
-					<h:link value="Deletar" outcome="deletar">
-						<f:param name="aluno" value="#{aluno.matricula}" />
-					</h:link>
-				</p:column>
-				<p:column headerText="Opções">
-					<h:link value="Atualizar" outcome="/aluno/atualizar.xhtml">
-						<f:param name="aluno" value="#{aluno.matricula}" />
-					</h:link>
-				</p:column>
-				<p:column headerText="Opções">
-					<h:link value="Detalhes" outcome="/aluno/detalhes.xhtml">
-						<f:param name="aluno" value="#{aluno.matricula}" />
-					</h:link>
-				</p:column>
-
 				<f:facet name="footer">
-					<h:link value="Novo Aluno" outcome="/aluno/adicionar.xhtml">
-
-					</h:link>
+					<h:link value="Novo Aluno" outcome="/aluno/adicionar.xhtml"/>
 				</f:facet>
-
-
 			</p:dataTable>
 		</h:form>
 	</ui:define>

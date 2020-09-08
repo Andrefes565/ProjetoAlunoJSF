@@ -1,63 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/modeloSistema.xhtml">
 
-	<title>Editar Curso</title>
+	<f:facet name="header">Atualizar Curso</f:facet>
+	<ui:define name="menu">
+		<ui:include src="/includes/menu.xhtml" />
+	</ui:define>
 
 	<f:metadata>
 		<f:viewParam name="curso" value="#{MBCursos.curso.id}" />
 		<f:event type="preRenderView" listener="#{MBCursos.selecionar}" />
 	</f:metadata>
-</h:head>
-<h:body>
 
-	<h:messages globalOnly="true" />
-
-	<h:panelGroup rendered="#{MBCursos.curso.id != 0}">
-
+	<h3>Adicionar Curso:</h3>
+	<ui:define name="conteudo">
 		<h:form>
-			<h:panelGrid columns="3">
-			
-				<h:outputLabel value="ID:" />
-				<h:inputText f:disabled="true" id="id" value="#{MBCursos.curso.id}"
-					required="true">
-					<f:validateLength minimum="3" maximum="255" />
-				</h:inputText>
-				<h:message for="id" />
+			<div class="ui-fluid p-formgrid p-grid">
+				<div class="p-field p-col-12 p-md-6">
+					<p:outputLabel for="id" value="Id:" />
+					<p:inputText f:disabled="true" id="id" value="#{MBCursos.curso.id}"
+						required="true" />
+				</div>
+				<div class="p-field p-col-12 p-md-6">
+					<p:outputLabel for="descricao" value="Descrição:" />
+					<p:inputText for="descricao" id="descricao"
+						value="#{MBCursos.curso.descricao}" required="true" />
+				</div>
+				<div class="p-field p-col-12">
+					<p:outputLabel for="areaCon" value="Área" />
+					<p:inputText for="areaCon" id="areaCon"
+						value="#{MBCursos.curso.areaCon}" required="true" />
+				</div>
+				<div class="p-field p-col-12 p-md-6">
+					<p:outputLabel for="ativo" value="Status:" />
+					<p:inputText id="ativo" value="#{MBCursos.curso.ativo}"
+						required="true" />
+				</div>
+			</div>
 
-				<h:outputLabel value="Descrição" />
-				<h:inputText id="descricao" value="#{MBCursos.curso.descricao}"
-					required="true">
-					<f:validateLength minimum="3" maximum="255" />
-				</h:inputText>
-				<h:message for="descricao" />
-
-				<h:outputLabel value="Área Do COnhecimento" />
-				<h:inputText id="areaCon" value="#{MBCursos.curso.areaCon}"
-					required="true">
-					<f:validateLength minimum="3" maximum="255" />
-				</h:inputText>
-				<h:message for="areaCon" />
-
-				<h:outputLabel value="Atatus" />
-				<h:inputText id="status" value="#{MBCursos.curso.ativo}"
-					required="true">
-					<f:validateLength minimum="3" maximum="255" />
-				</h:inputText>
-				<h:message for="status" />
-
-				<h:commandButton value="Enviar" action="#{MBCursos.atualizar}" />
-			</h:panelGrid>
+			<p:commandButton value="Enviar" action="#{MBCursos.atualizar}"
+				update="msgGlobal" />
 		</h:form>
-
 		<h:link value="Voltar" outcome="/curso/cursos.xhtml" />
-	</h:panelGroup>
-</h:body>
-</html>
+	</ui:define>
+</ui:composition>

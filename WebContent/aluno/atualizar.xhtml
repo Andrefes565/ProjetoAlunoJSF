@@ -1,80 +1,64 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/modeloSistema.xhtml">
 
-	<title>Editar Aluno</title>
-
+	<f:facet name="header">Atualizar Aluno</f:facet>
+	<ui:define name="menu">
+		<ui:include src="/includes/menu.xhtml" />
+	</ui:define>
+	
 	<f:metadata>
 		<f:viewParam name="aluno" value="#{MBAlunos.aluno.matricula}" />
 		<f:event type="preRenderView" listener="#{MBAlunos.selecionar}" />
 	</f:metadata>
-</h:head>
-<h:body>
-	<h1>Editar Aluno</h1>
+	
 	<h:messages globalOnly="true" />
-
-	<h:panelGroup rendered="#{MBAlunos.aluno.matricula != 0}">
-
+	<h3>Adicionar Aluno</h3>
+	<ui:define name="conteudo">
 		<h:form>
-			<h:panelGrid columns="3">
-			
-				<h:outputLabel value="Matrícula:" />
-				<h:inputText f:disabled="true" id="matricula"
-					value="#{MBAlunos.aluno.matricula}" required="true">
-					<f:validateLength minimum="3" maximum="255" />
-				</h:inputText>
-				<h:message for="matricula" />
+			<div class="ui-fluid p-formgrid p-grid">
+				<div class="p-field p-col-12 p-md-6">
+					<p:outputLabel for="matricula" value="Matrícula:" />
+					<p:inputText f:disabled="true" id="matricula" value="#{MBAlunos.aluno.matricula}"
+						required="true" />
+				</div>
+				<div class="p-field p-col-12 p-md-6">
+					<p:outputLabel for="nome" value="Nome:" />
+					<p:inputText for="nome" id="nome" value="#{MBAlunos.aluno.nome}"
+						required="true" />
+				</div>
+				<div class="p-field p-col-12">
+					<p:outputLabel value="Telefone:" />
+					<p:inputText id="telefone" value="#{MBAlunos.aluno.telefone}"
+						required="true" />
+				</div>
+				<div class="p-field p-col-12 p-md-6">
+					<p:outputLabel value="Email:" />
+					<p:inputText id="email" value="#{MBAlunos.aluno.email}"
+						required="true" />
+				</div>
+				<div class="p-field p-col-12 p-md-3">
+					<p:outputLabel for="curso" value="Cursos:" />
+					<p:selectOneMenu id="curso" value="#{MBAlunos.aluno.curso}"
+						converter="cursoConerverter">
+						<f:selectItems var="curso" value="#{MBCursos.cursos}"
+							itemValue="#{curso}" itemLabel="#{curso.descricao}" />
+					</p:selectOneMenu>
+				</div>
+				<div class="p-field p-col-12 p-md-3">
+					<p:outputLabel for="observacao" value="Observação:" />
+					<p:inputTextarea id="observacao" rows="4"
+						value="#{MBAlunos.aluno.observacao}" />
+				</div>
+			</div>
 
-				<h:outputLabel value="Nome:" />
-				<h:inputText id="nome" value="#{MBAlunos.aluno.nome}"
-					required="true">
-					<f:validateLength minimum="3" maximum="255" />
-				</h:inputText>
-				<h:message for="nome" />
-
-				<h:outputLabel value="Curso:" />
-				<h:selectOneMenu id="curso" value="#{MBAlunos.aluno.curso}"
-					converter="cursoConerverter">
-					<f:selectItems value="#{MBCursos.cursos}" var="curso"
-						itemValue="#{curso}" itemLabel="#{curso.descricao}" />
-				</h:selectOneMenu>
-				<h:message for="curso" />
-
-				<h:outputLabel value="Email" />
-				<h:inputText id="email" value="#{MBAlunos.aluno.email}"
-					required="true">
-					<f:validateLength minimum="3" maximum="255" />
-				</h:inputText>
-				<h:message for="email" />
-
-				<h:outputLabel value="Telefone" />
-				<h:inputText id="telefone" value="#{MBAlunos.aluno.telefone}"
-					required="true">
-					<f:validateLength minimum="3" maximum="255" />
-				</h:inputText>
-				<h:message for="telefone" />
-
-				<h:outputLabel value="Observação:" />
-				<h:inputTextarea id="observacao"
-					value="#{MBAlunos.aluno.observacao}" required="true">
-					<f:validateLength minimum="3" maximum="255" />
-				</h:inputTextarea>
-				<h:message for="observacao" />
-
-
-
-				<h:commandButton value="Enviar" action="#{MBAlunos.atualizar}" />
-			</h:panelGrid>
+			<p:commandButton value="Enviar" action="#{MBAlunos.atualizar}" update="msgGlobal" />
 		</h:form>
-
 		<h:link value="Voltar" outcome="/aluno/alunos.xhtml" />
-	</h:panelGroup>
-</h:body>
-</html>
+	</ui:define>
+</ui:composition>

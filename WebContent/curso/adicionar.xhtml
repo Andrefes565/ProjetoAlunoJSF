@@ -1,51 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/modeloSistema.xhtml">
 
-	<title>Adicionar Curso</title>
-</h:head>
-<h:body>
-	<h3>Adicionar Curso</h3>
+	<f:facet name="header">Lista de Alunos</f:facet>
+	<ui:define name="menu">
+		<ui:include src="/includes/menu.xhtml" />
+	</ui:define>
+	<h3>Adicionar Aluno</h3>
 
-	<h:form>
-		<h:panelGrid columns="3">
-			<h:outputLabel value="Id:" />
-			<h:inputText id="id" value="#{MBCursos.curso.id}"
-				required="true">
-			</h:inputText>
-			<h:message for="id" />
-			
-			<h:outputLabel value="Descrição:" />
-			<h:inputText id="descricao" value="#{MBCursos.curso.descricao}"
-				required="true">
-				<f:validateLength minimum="3" maximum="255" />
-			</h:inputText>
-			<h:message for="descricao" />
+	<ui:define name="conteudo">
+		<h:form>
+			<div class="ui-fluid p-formgrid p-grid">
+			<div class="p-field p-col-12 p-md-6">
+					<p:outputLabel for="id" value="Id:" />
+					<p:inputText id="id" value="#{MBCursos.curso.id}"
+						required="true" />
+				</div>
+				<div class="p-field p-col-12 p-md-6">
+					<p:outputLabel for="descricao" value="Descrição:" />
+					<p:inputText id="descricao" value="#{MBCursos.curso.descricao}"
+						required="true" />
+				</div>
+				<div class="p-field p-col-12 p-md-6">
+					<p:outputLabel for="area" value="Área:" />
+					<p:inputText id="area" value="#{MBCursos.curso.areaCon}"
+						required="true" />
+				</div>
+				<div class="p-field p-col-12 p-md-6">
+					<p:outputLabel for="ativo" value="Status:" />
+					<p:inputText id="ativo" value="#{MBCursos.curso.ativo}"
+						required="true" />
+				</div>
+			</div>
 
-			<h:outputLabel value="Área do Conhecimento:" />
-			<h:inputText id="areaCon" value="#{MBCursos.curso.areaCon}"
-				required="true">
-				<f:validateLength minimum="3" maximum="255" />
-			</h:inputText>
-			<h:message for="areaCon" />
+			<p:commandButton value="Enviar" action="#{MBCursos.inserir}" />
+		</h:form>
 
-			<h:outputLabel value="Status" />
-			<h:inputText id="ativo" value="#{MBCursos.curso.ativo}"
-				required="true">
-				<f:validateLength minimum="3" maximum="255" />
-			</h:inputText>
-			<h:message for="ativo" />
-
-		</h:panelGrid>
-
-		<h:commandButton value="Enviar" action="#{MBCursos.inserir}" />
-	</h:form>
-
-	<h:link value="Voltar" outcome="/curso/cursos.xhtml" />
-</h:body>
-</html>
+		<h:link value="Voltar" outcome="/curso/cursos.xhtml" />
+	</ui:define>
+</ui:composition>

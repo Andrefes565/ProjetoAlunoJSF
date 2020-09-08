@@ -94,7 +94,7 @@ public class CursoBean {
             if (curso == null || curso.getId() == 0) {
             	curso = new Curso();
 
-                throw new Exception("Lembrete não encontrado.");
+                throw new Exception("Curso não encontrado.");
             }
         } catch (Exception e) {
             FacesMessage message = new FacesMessage(e.getMessage());
