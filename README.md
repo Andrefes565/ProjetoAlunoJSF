@@ -10,4 +10,4 @@
 
 
 ## Tela de Listagem de Cursos
-![Lista de Cursos](https://github.com/Andrefes565/.NETMvc-CadastroDeAunos/blob/master/Lista%20de%20Alunos.png)
+![Lista de Cursos](https://github.com/Andrefes565/ProjetoAlunoJSF/blob/master/Lista%20De%20Cursos.png)
