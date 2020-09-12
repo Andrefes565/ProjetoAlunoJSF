@@ -6,7 +6,7 @@
 ![Lista de Alunos](https://github.com/Andrefes565/.NETMvc-CadastroDeAunos/blob/master/Lista%20de%20Alunos.png)
 
 ## Tela de Cadastro de Alunos
-![Cadastro de Alunos](https://github.com/Andrefes565/.NETMvc-CadastroDeAunos/blob/master/Lista%20de%20Alunos.png)
+![Cadastro de Alunos](https://github.com/Andrefes565/ProjetoAlunoJSF/blob/master/Cadastro%20De%20Alunos.png)
 
 
 ## Tela de Listagem de Cursos
